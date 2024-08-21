@@ -29,7 +29,14 @@ export function colorFont(el: Element | string, config:any = {color:['red','gree
         colorType+=i*split+'%{color:'+color[i]+';}'
     }
     const animation = `@keyframes ${className} {${colorType}}`;
-    const compiled = sass.compileString(style);
+    let compiled
+    try{
+         compiled = sass.compileString(style);
+    }
+    catch(e){
+            console.log(e);
+            
+    }
     document.createElement('style').innerHTML = elstyle + animation + compiled;
     console.log(compiled);
 }
