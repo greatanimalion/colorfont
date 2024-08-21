@@ -21,5 +21,10 @@ export default [
             entryFileNames: '[name].esm.js',
         },
         plugins: [resolve(), commonjs(), typescript(), terser(), cleanup()],
+    },{
+        entry: 'src/scripts/main.js',
+        dest: 'build/js/main.min.js',
+        format: 'iife',
+        sourceMap: 'inline',
     }
 ];

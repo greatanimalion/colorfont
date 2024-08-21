@@ -26,7 +26,7 @@ export function colorFont(el: Element | string, config:any = {color:['red','gree
     let colorType=''
     const split=Math.floor(100/fontNum)
     for(let i  =0;i<fontNum;i++){
-        colorType+=i*split+'%{color:'+color[i]+';}'
+        colorType+=i*split+`%{color:${color[i]};text-shadow: 0 0 10px ${color[i]},0 0 20px ${color[i]},0 0 30px ${color[i]},0 0 40px ${color[i]};}`
     }
     const animation = `@keyframes ${className} {${colorType}}`;
     let compiled
