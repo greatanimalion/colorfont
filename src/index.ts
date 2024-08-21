@@ -11,6 +11,7 @@ export function colorFont(el: Element | string, config:any = {color:['red','gree
     if (typeof el === 'string') el = document.querySelector(el) as Element;
     if (!el) throw new Error('el not found');
     const text: string[] = el.textContent?.trim().split('') as string[];
+    el.innerHTML=''
     text.map((e:string)=>{
         const span = document.createElement('span');
         span.textContent = e;
