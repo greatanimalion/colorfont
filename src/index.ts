@@ -1,5 +1,5 @@
-import hash from "./hash-cyrb53";
-import * as sass from 'sass';
+import hash from "./core/hash-cyrb53";
+import compile from "./core/compile";
 
 type ColorFontOptions = {
     openBlur: boolean,
@@ -47,7 +47,7 @@ export default function colorFont(el: Element | string,
     el.classList.add(className);
     const fontNum = text.length;
     if (fontNum > 7) console.warn('colorfontcolor: 不建议添加过多的文字，可能会导致性能问题');
-    const style = `@for $n from 1 through ${fontNum} {.${className}>span:nth-child(#{$n}) {animation-delay:- $n * 0.1s;}}`;
+    const style =`.${className}>span:nth-child($) {animation-delay:- $s;}`;
     const elstyle = `.${className}>span{\n animation: ${className} ${duration}s infinite alternate;\n}\n`
     let colorType = ''
     const split = Math.floor(100 / (color.length - 1))
@@ -59,7 +59,7 @@ export default function colorFont(el: Element | string,
     const animation = `@keyframes ${className} {\n${colorType}}\n`;
     let compiled = ''
     try {
-        compiled = sass.compileString(style).css;
+        compiled = compile(style,fontNum);
     }
     catch (e) {
         console.log('sass 语法错误，无法解析');
