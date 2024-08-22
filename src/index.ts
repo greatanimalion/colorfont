@@ -62,7 +62,7 @@ export default function colorFont(el: Element | string,
         compiled = compile(style,fontNum);
     }
     catch (e) {
-        console.log('sass 语法错误，无法解析');
+        console.log('colorfontcolor解析语法错误，无法解析');
     }
     let excit = document.querySelector('#_--_color-font-style_--_')
     if (!excit) {
