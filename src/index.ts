@@ -20,7 +20,7 @@ const defaultOptions = {
     duration: 2,
     blurRadius: 10
 };
-export function colorFont(el: Element | string,
+export default function colorFont(el: Element | string,
     options: ColorFontOptions = {
         openBlur: true,
         color: ['red', 'green', 'blue'],
